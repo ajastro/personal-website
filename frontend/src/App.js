@@ -132,7 +132,7 @@ function App() {
             className="top-nav-logo"
             onClick={() => scrollToSection("about")}
           >
-            Your Name
+            Arjun Vashistha
           </div>
           <nav className="top-nav-links">
             <button
