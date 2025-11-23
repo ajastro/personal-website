@@ -24,6 +24,76 @@ body {
 
 .App {
   min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* ===== Ambient animated background blobs ===== */
+
+.ambient-bg {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.ambient-blob {
+  position: absolute;
+  width: 420px;
+  height: 420px;
+  border-radius: 999px;
+  filter: blur(90px);
+  opacity: 0.35;
+  mix-blend-mode: screen;
+}
+
+.ambient-blob-1 {
+  background: #f97316;
+  top: -80px;
+  left: -60px;
+  animation: floatBlob1 22s ease-in-out infinite alternate;
+}
+
+.ambient-blob-2 {
+  background: #fb923c;
+  top: 40%;
+  right: -120px;
+  animation: floatBlob2 28s ease-in-out infinite alternate;
+}
+
+.ambient-blob-3 {
+  background: #ea580c;
+  bottom: -160px;
+  left: 30%;
+  animation: floatBlob3 30s ease-in-out infinite alternate;
+}
+
+@keyframes floatBlob1 {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  100% {
+    transform: translate3d(60px, 80px, 0) scale(1.1);
+  }
+}
+
+@keyframes floatBlob2 {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  100% {
+    transform: translate3d(-80px, -40px, 0) scale(1.05);
+  }
+}
+
+@keyframes floatBlob3 {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  100% {
+    transform: translate3d(40px, -60px, 0) scale(1.15);
+  }
 }
 
 /* TOP NAV BAR */
@@ -146,6 +216,7 @@ body {
   grid-template-columns: minmax(260px, 340px) minmax(0, 1fr);
   gap: 4rem;
   position: relative;
+  z-index: 1; /* above ambient blobs */
 }
 
 /* Subtle bottom fade like Apple */
@@ -169,6 +240,50 @@ body {
 /* Left intro column */
 .intro-column {
   align-self: flex-start;
+}
+
+/* Glowing hero card with gradient sweep */
+.intro-hero {
+  position: relative;
+  padding: 1.4rem 1.3rem;
+  margin-bottom: 1.4rem;
+  border-radius: 1.2rem;
+  background: radial-gradient(circle at top left, #020617, #020617);
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.85);
+  overflow: hidden;
+}
+
+.intro-hero-glow {
+  position: absolute;
+  inset: -40%;
+  background: conic-gradient(
+    from 0deg,
+    rgba(249, 115, 22, 0.0) 0%,
+    rgba(249, 115, 22, 0.4) 25%,
+    rgba(249, 115, 22, 0.0) 50%,
+    rgba(249, 115, 22, 0.35) 75%,
+    rgba(249, 115, 22, 0.0) 100%
+  );
+  opacity: 0.7;
+  mix-blend-mode: screen;
+  animation: sweepGlow 30s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes sweepGlow {
+  0% {
+    transform: rotate(0deg) translate3d(0, 0, 0);
+  }
+  100% {
+    transform: rotate(360deg) translate3d(0, 0, 0);
+  }
+}
+
+/* Keep text above glow */
+.intro-hero > *:not(.intro-hero-glow) {
+  position: relative;
+  z-index: 1;
 }
 
 /* Pin intro on desktop for dramatic effect */
@@ -216,7 +331,7 @@ body {
 }
 
 .intro-backend {
-  margin-top: 1.4rem;
+  margin-top: 0.4rem;
   display: flex;
   flex-direction: column;
   gap: 0.2rem;
@@ -235,7 +350,7 @@ body {
 }
 
 .intro-links {
-  margin-top: 1.4rem;
+  margin-top: 1.2rem;
   display: flex;
   flex-wrap: wrap;
   gap: 0.6rem;
@@ -259,7 +374,7 @@ body {
 .content-column {
   padding-top: 0.4rem;
   position: relative;
-  z-index: 2; /* above page-shell fade */
+  z-index: 2; /* above ambient blobs and page-shell fade */
 }
 
 .content-section {

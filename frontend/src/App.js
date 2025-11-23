@@ -125,6 +125,13 @@ function App() {
 
   return (
     <div className="App">
+      {/* Ambient animated background blobs */}
+      <div className="ambient-bg">
+        <div className="ambient-blob ambient-blob-1" />
+        <div className="ambient-blob ambient-blob-2" />
+        <div className="ambient-blob ambient-blob-3" />
+      </div>
+
       {/* TOP NAV BAR */}
       <header className="top-nav">
         <div className="top-nav-inner">
@@ -164,7 +171,7 @@ function App() {
               className="top-nav-resume"
               target="_blank"
               rel="noreferrer"
-              // download="ArjunVashistha-Resume"
+              download="Arjun-Vashistha-Resume"
             >
               Download Resume
             </a>
@@ -176,17 +183,23 @@ function App() {
       <div className="page-shell">
         {/* LEFT COLUMN – Intro */}
         <section className="intro-column">
-          <p className="intro-eyebrow">Hi, my name is</p>
-          <h1 className="intro-name">Your Name</h1>
-          <p className="intro-role">I build things for the web.</p>
-          <p className="intro-text">
-            I&apos;m a backend-leaning engineer who enjoys designing and building
-            clean, reliable systems with Java, Spring Boot, React, and AWS.
-          </p>
-          <p className="intro-text">
-            Right now I&apos;m focused on learning cloud architecture, improving my
-            frontend skills, and building projects that showcase my journey.
-          </p>
+          {/* Glowing hero card with gradient sweep */}
+          <div className="intro-hero">
+            <div className="intro-hero-glow" />
+            <p className="intro-eyebrow">Hi, my name is</p>
+            <h1 className="intro-name">Arjun Vashistha</h1>
+            <p className="intro-role">I build things for the web.</p>
+            <p className="intro-text">
+              I&apos;m a backend-leaning engineer who enjoys designing and
+              building clean, reliable systems with Java, Spring Boot, React,
+              and AWS.
+            </p>
+            <p className="intro-text">
+              Right now I&apos;m focused on learning cloud architecture,
+              improving my frontend skills, and building projects that showcase
+              my journey.
+            </p>
+          </div>
 
           <div className="intro-backend">
             <span className="intro-backend-label">Backend status</span>
@@ -229,8 +242,8 @@ function App() {
             <p>
               Example: I enjoy working across the stack but I&apos;m especially
               interested in backend APIs, data flows, and deploying services to
-              AWS. I like taking ideas from &quot;rough sketch&quot; to something
-              real that people can use.
+              AWS. I like taking ideas from &quot;rough sketch&quot; to
+              something real that people can use.
             </p>
           </section>
 
