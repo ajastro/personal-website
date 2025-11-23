@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./App.css";
 
 function App() {
+  const [contactStatus, setContactStatus] = useState(null);
   const [greeting, setGreeting] = useState("Loading...");
   const [activeSection, setActiveSection] = useState("about");
 
@@ -360,12 +361,41 @@ useEffect(() => {
               backend.
             </p>
             <form
-              className="contact-form"
-              onSubmit={(e) => {
-                e.preventDefault();
-                alert("In the future, this will send a message to your backend!");
-              }}
-            >
+  className="contact-form"
+  onSubmit={async (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const name = form.name.value;
+    const email = form.email.value;
+    const message = form.message.value;
+
+    setContactStatus("loading");
+
+    try {
+      const apiBase =
+        process.env.REACT_APP_API_BASE_URL || "http://localhost:8080/api";
+
+      const res = await fetch(`${apiBase}/contact`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ name, email, message }),
+      });
+
+      if (!res.ok) {
+        throw new Error("Request failed");
+      }
+
+      setContactStatus("success");
+      form.reset();
+    } catch (err) {
+      console.error(err);
+      setContactStatus("error");
+    }
+  }}
+>
+
               <div className="form-row">
                 <label htmlFor="name">Name</label>
                 <input id="name" type="text" required />
@@ -378,13 +408,27 @@ useEffect(() => {
                 <label htmlFor="message">Message</label>
                 <textarea id="message" rows="4" required />
               </div>
-              <button type="submit">Send (placeholder)</button>
+              <button type="submit">Send</button>
+{contactStatus === "loading" && (
+  <p className="contact-status">Sending…</p>
+)}
+{contactStatus === "success" && (
+  <p className="contact-status contact-status-success">
+    Thanks! I&apos;ll get back to you soon.
+  </p>
+)}
+{contactStatus === "error" && (
+  <p className="contact-status contact-status-error">
+    Something went wrong. Please try again.
+  </p>
+)}
+
             </form>
           </section>
 
           <footer className="page-footer reveal">
             <p>
-              © {new Date().getFullYear()} Your Name · Built with React &amp;
+              © {new Date().getFullYear()} Arjun Vashistha · Built with React &amp;
               Spring Boot
             </p>
           </footer>

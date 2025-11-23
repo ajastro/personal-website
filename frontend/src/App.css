@@ -656,4 +656,18 @@ body {
   .top-nav-resume {
     display: none; /* optional: hide resume button on very small screens */
   }
+
+  .contact-status {
+  margin-top: 0.5rem;
+  font-size: 0.8rem;
+}
+
+.contact-status-success {
+  color: #4ade80; /* green */
+}
+
+.contact-status-error {
+  color: #fca5a5; /* red */
+}
+
 }
