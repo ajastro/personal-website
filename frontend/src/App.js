@@ -3,6 +3,7 @@ import "./App.css";
 
 function App() {
   const [greeting, setGreeting] = useState("Loading...");
+  const [activeSection, setActiveSection] = useState("about");
 
   // Call your backend /api/hello
   useEffect(() => {
@@ -17,6 +18,22 @@ function App() {
         setGreeting("Could not reach backend. Is it running?");
       });
   }, []);
+
+  // Smooth scroll helper for nav buttons with offset for fixed nav
+  const scrollToSection = (id) => {
+    const el = document.getElementById(id);
+    if (!el) return;
+
+    const navHeight = 72; // adjust if you change nav height
+    const rect = el.getBoundingClientRect();
+    const scrollTop = window.scrollY || window.pageYOffset;
+    const targetY = rect.top + scrollTop - navHeight;
+
+    window.scrollTo({
+      top: targetY,
+      behavior: "smooth",
+    });
+  };
 
   // Scroll reveal (fade + slide)
   useEffect(() => {
@@ -63,10 +80,10 @@ function App() {
       if (!name) return;
 
       const scroll = window.scrollY;
-      const fadeEnd = 200; // how far before fully faded-ish
+      const fadeEnd = 200;
       const progress = Math.min(1, scroll / fadeEnd);
 
-      const opacity = 1 - progress * 0.7; // don't fully disappear
+      const opacity = 1 - progress * 0.7;
       const scale = 1 - progress * 0.05;
       const translateY = -progress * 10;
 
@@ -79,8 +96,82 @@ function App() {
     return () => window.removeEventListener("scroll", handleNameScroll);
   }, []);
 
+  // Track which section is active for nav highlight
+  useEffect(() => {
+    const sectionIds = ["about", "experience", "projects", "contact"];
+    const sections = sectionIds
+      .map((id) => document.getElementById(id))
+      .filter(Boolean);
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const id = entry.target.id;
+            setActiveSection(id);
+          }
+        });
+      },
+      {
+        root: null,
+        rootMargin: "-40% 0px -50% 0px",
+        threshold: 0.1,
+      }
+    );
+
+    sections.forEach((sec) => observer.observe(sec));
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <div className="App">
+      {/* TOP NAV BAR */}
+      <header className="top-nav">
+        <div className="top-nav-inner">
+          <div
+            className="top-nav-logo"
+            onClick={() => scrollToSection("about")}
+          >
+            Your Name
+          </div>
+          <nav className="top-nav-links">
+            <button
+              className={activeSection === "about" ? "active" : ""}
+              onClick={() => scrollToSection("about")}
+            >
+              About
+            </button>
+            <button
+              className={activeSection === "experience" ? "active" : ""}
+              onClick={() => scrollToSection("experience")}
+            >
+              Experience
+            </button>
+            <button
+              className={activeSection === "projects" ? "active" : ""}
+              onClick={() => scrollToSection("projects")}
+            >
+              Projects
+            </button>
+            <button
+              className={activeSection === "contact" ? "active" : ""}
+              onClick={() => scrollToSection("contact")}
+            >
+              Contact
+            </button>
+            <a
+              href="/resume.pdf"
+              className="top-nav-resume"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Download Résumé
+            </a>
+          </nav>
+        </div>
+      </header>
+
+      {/* MAIN LAYOUT */}
       <div className="page-shell">
         {/* LEFT COLUMN – Intro */}
         <section className="intro-column">
