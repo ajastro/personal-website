@@ -160,12 +160,13 @@ function App() {
               Contact
             </button>
             <a
-              href="/resume.pdf"
+              href={process.env.PUBLIC_URL + "/resume.pdf"}
               className="top-nav-resume"
               target="_blank"
               rel="noreferrer"
+              // download="ArjunVashistha-Resume"
             >
-              Download Résumé
+              Download Resume
             </a>
           </nav>
         </div>
