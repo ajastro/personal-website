@@ -96,32 +96,37 @@ function App() {
     return () => window.removeEventListener("scroll", handleNameScroll);
   }, []);
 
-  // Track which section is active for nav highlight
-  useEffect(() => {
-    const sectionIds = ["about", "experience", "projects", "contact"];
-    const sections = sectionIds
-      .map((id) => document.getElementById(id))
-      .filter(Boolean);
+  // Track active section based on scroll position
+useEffect(() => {
+  const sectionIds = ["about", "experience", "projects", "contact"];
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const id = entry.target.id;
-            setActiveSection(id);
-          }
-        });
-      },
-      {
-        root: null,
-        rootMargin: "-40% 0px -50% 0px",
-        threshold: 0.1,
+  const handleScroll = () => {
+    const navHeight = 72; // keep in sync with scrollToSection
+    const scrollPos = window.scrollY + navHeight + 10;
+
+    let currentId = sectionIds[0];
+
+    sectionIds.forEach((id) => {
+      const el = document.getElementById(id);
+      if (!el) return;
+
+      const sectionTop = el.offsetTop;
+
+      if (sectionTop <= scrollPos) {
+        currentId = id;
       }
-    );
+    });
 
-    sections.forEach((sec) => observer.observe(sec));
-    return () => observer.disconnect();
-  }, []);
+    setActiveSection(currentId);
+  };
+
+  window.addEventListener("scroll", handleScroll);
+  // run once on mount so it's correct on refresh
+  handleScroll();
+
+  return () => window.removeEventListener("scroll", handleScroll);
+}, []);
+
 
   return (
     <div className="App">
@@ -208,20 +213,20 @@ function App() {
 
           <div className="intro-links">
             <a
-              href="https://github.com/yourusername"
+              href="https://github.com/ajastro"
               target="_blank"
               rel="noreferrer"
             >
               GitHub
             </a>
             <a
-              href="https://linkedin.com/in/yourusername"
+              href="https://www.linkedin.com/in/arjunvashistha/"
               target="_blank"
               rel="noreferrer"
             >
               LinkedIn
             </a>
-            <a href="mailto:you@example.com">Email</a>
+            <a href="mailto:arjun.v.clt@gmail.com">Email</a>
           </div>
         </section>
 
