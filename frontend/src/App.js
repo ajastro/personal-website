@@ -182,11 +182,11 @@ useEffect(() => {
             <p className="intro-text">
               I&apos;m a backend-leaning engineer who enjoys designing and
               building clean, reliable systems with Java, Spring Boot, React,
-              and AWS.
+              and AI tools.
             </p>
             <p className="intro-text">
-              Right now I&apos;m focused on learning cloud architecture,
-              improving my frontend skills, and building projects that showcase
+              Right now I&apos;m focused on building AI projects,
+              improving my frontend skills, and building products that showcase
               my journey.
             </p>
           </div>
@@ -219,14 +219,8 @@ useEffect(() => {
           >
             <h2>About</h2>
             <p>
-              Write a short bio here about who you are and what you&apos;re
-              interested in. Mention your background, what you&apos;re learning,
-              and what kinds of problems you like to solve.
-            </p>
-            <p>
-              Example: I enjoy working across the stack but I&apos;m especially
-              interested in backend APIs, data flows, and deploying services to
-              AWS. I like taking ideas from &quot;rough sketch&quot; to
+              Assistant Vice President and Software Engineer specializing in large-scale database migrations, production stability, and applied AI solutions in regulated financial environments. Proven track record of delivering enterprise systems ahead of schedule while improving performance, reliability, and operational efficiency.
+              I like taking ideas from &quot;rough sketch&quot; to
               something real that people can use.
             </p>
           </section>
@@ -243,18 +237,16 @@ useEffect(() => {
                 <div className="timeline-dot" />
                 <div className="timeline-body">
                   <header className="timeline-header">
-                    <h3>Senior Engineer · Company Name</h3>
-                    <span className="timeline-meta">2023 – Present</span>
+                    <h3>Software Engineer II (AVP) · Financial Services</h3>
+                    <span className="timeline-meta">2025 – Present</span>
                   </header>
                   <p>
-                    Briefly describe what you did here: designed and maintained
-                    backend services, improved reliability and performance, and
-                    collaborated with frontend and product teams.
+                    I am a Java-focused software engineer specializing in the end-to-end deployment of high-scale enterprise platforms and AI-driven automation tools. By combining deep expertise in data migration and SQL optimization with LLM-based RAG implementations, I bridge the gap between cutting-edge AI integration and the rigorous reliability requirements of mission-critical production environments.
                   </p>
                   <div className="tag-row">
                     <span className="tag">Java</span>
                     <span className="tag">Spring Boot</span>
-                    <span className="tag">AWS</span>
+                    <span className="tag">SQL</span>
                   </div>
                 </div>
               </article>
@@ -263,18 +255,16 @@ useEffect(() => {
                 <div className="timeline-dot" />
                 <div className="timeline-body">
                   <header className="timeline-header">
-                    <h3>Engineer / Internship · Other Company</h3>
-                    <span className="timeline-meta">2021 – 2023</span>
+                    <h3>Global Technology Analyst · Financial Services</h3>
+                    <span className="timeline-meta">2023 – 2025</span>
                   </header>
                   <p>
-                    Another short summary: built features, fixed bugs, and
-                    shipped code that improved user experience. Mention any
-                    specific stack or tools you used.
+                    I excel at hardening the operational reliability of mission-critical systems by implementing robust monitoring and Python-based automation. By streamlining CI/CD pipelines to halve deployment times and leading complex delivery cycles for large-scale data platforms, I ensure that enterprise-grade software remains resilient and high-performing under pressure.
                   </p>
                   <div className="tag-row">
-                    <span className="tag">React</span>
-                    <span className="tag">TypeScript</span>
-                    <span className="tag">PostgreSQL</span>
+                    <span className="tag">Python</span>
+                    <span className="tag">SQL</span>
+                    <span className="tag">Monitoring Tools</span>
                   </div>
                 </div>
               </article>
@@ -299,28 +289,27 @@ useEffect(() => {
                 </header>
                 <p>
                   The site you&apos;re looking at now. A full-stack project using
-                  React on the frontend and a Spring Boot API on the backend,
-                  hosted on AWS.
+                  React on the frontend and a Spring Boot API on the backend.
                 </p>
                 <div className="tag-row">
                   <span className="tag">React</span>
                   <span className="tag">Spring Boot</span>
-                  <span className="tag">AWS</span>
+                  <span className="tag">GitHub</span>
                 </div>
               </article>
 
               <article className="project-item">
                 <header className="project-header">
-                  <h3>Example Project 2</h3>
-                  <span className="project-meta">Side project</span>
+                  <h3>Data Base Migration</h3>
+                  <span className="project-meta">2025 · Delivered</span>
                 </header>
                 <p>
-                  Replace this with a real project. Describe what problem it
-                  solves and what you learned while building it.
+                  Migrated a large-scale database from one system to another. Optimized the process to reduce downtime and improve performance.
                 </p>
                 <div className="tag-row">
                   <span className="tag">Java</span>
-                  <span className="tag">REST API</span>
+                  <span className="tag">MongoDB</span>
+                  <span className="tag">CassandraDB</span>
                 </div>
               </article>
             </div>
@@ -334,7 +323,6 @@ useEffect(() => {
           >
             <h2>Contact</h2>
             <p>
-              I&apos;m open to hearing about roles, projects, or collaborations.
               You can reach out on LinkedIn.
             </p>
             <div className="intro-links">
@@ -350,8 +338,7 @@ useEffect(() => {
 
           <footer className="page-footer reveal">
             <p>
-              © {new Date().getFullYear()} Arjun Vashistha · Built with React &amp;
-              CSS
+              © {new Date().getFullYear()} Arjun Vashistha 
             </p>
           </footer>
         </main>
