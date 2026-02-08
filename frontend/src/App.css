@@ -524,61 +524,6 @@ body {
   color: var(--accent);
 }
 
-/* Contact form */
-.contact-form {
-  margin-top: 1.2rem;
-  max-width: 480px;
-}
-
-.form-row {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 1rem;
-}
-
-.form-row label {
-  font-size: 0.8rem;
-  margin-bottom: 0.2rem;
-}
-
-.form-row input,
-.form-row textarea {
-  border-radius: 0.6rem;
-  border: 1px solid var(--border-subtle);
-  padding: 0.55rem 0.7rem;
-  font-size: 0.9rem;
-  background: var(--bg-elevated);
-  color: var(--text);
-}
-
-.form-row input:focus,
-.form-row textarea:focus {
-  outline: none;
-  border-color: var(--accent);
-}
-
-.contact-form button {
-  border-radius: 999px;
-  border: none;
-  padding: 0.6rem 1.4rem;
-  font-size: 0.9rem;
-  cursor: pointer;
-  background: var(--accent);
-  color: #0b1120;
-  font-weight: 600;
-  box-shadow: 0 12px 30px rgba(249, 115, 22, 0.4);
-  transition:
-    background 0.2s ease,
-    transform 0.1s ease,
-    box-shadow 0.2s ease;
-}
-
-.contact-form button:hover {
-  background: #ea580c;
-  transform: translateY(-1px);
-  box-shadow: 0 18px 40px rgba(249, 115, 22, 0.55);
-}
-
 /* Footer */
 .page-footer {
   margin-top: 1rem;
@@ -656,18 +601,4 @@ body {
   .top-nav-resume {
     display: none; /* optional: hide resume button on very small screens */
   }
-
-  .contact-status {
-  margin-top: 0.5rem;
-  font-size: 0.8rem;
-}
-
-.contact-status-success {
-  color: #4ade80; /* green */
-}
-
-.contact-status-error {
-  color: #fca5a5; /* red */
-}
-
 }

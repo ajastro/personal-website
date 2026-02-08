@@ -2,23 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./App.css";
 
 function App() {
-  const [contactStatus, setContactStatus] = useState(null);
-  const [greeting, setGreeting] = useState("Loading...");
   const [activeSection, setActiveSection] = useState("about");
-
-  // Call your backend /api/hello
-  useEffect(() => {
-    const apiBase =
-      process.env.REACT_APP_API_BASE_URL || "http://localhost:8080/api";
-
-    fetch(`${apiBase}/hello`)
-      .then((res) => res.text())
-      .then((text) => setGreeting(text))
-      .catch((err) => {
-        console.error(err);
-        setGreeting("Could not reach backend. Is it running?");
-      });
-  }, []);
 
   // Smooth scroll helper for nav buttons with offset for fixed nav
   const scrollToSection = (id) => {
@@ -207,11 +191,6 @@ useEffect(() => {
             </p>
           </div>
 
-          <div className="intro-backend">
-            <span className="intro-backend-label">Backend status</span>
-            <span className="intro-backend-value">{greeting}</span>
-          </div>
-
           <div className="intro-links">
             <a
               href="https://github.com/ajastro"
@@ -227,7 +206,6 @@ useEffect(() => {
             >
               LinkedIn
             </a>
-            <a href="mailto:arjun.v.clt@gmail.com">Email</a>
           </div>
         </section>
 
@@ -357,79 +335,23 @@ useEffect(() => {
             <h2>Contact</h2>
             <p>
               I&apos;m open to hearing about roles, projects, or collaborations.
-              The form below is a placeholder—you can later wire it up to your
-              backend.
+              You can reach out on LinkedIn.
             </p>
-            <form
-  className="contact-form"
-  onSubmit={async (e) => {
-    e.preventDefault();
-    const form = e.target;
-    const name = form.name.value;
-    const email = form.email.value;
-    const message = form.message.value;
-
-    setContactStatus("loading");
-
-    try {
-      const apiBase =
-        process.env.REACT_APP_API_BASE_URL || "http://localhost:8080/api";
-
-      const res = await fetch(`${apiBase}/contact`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ name, email, message }),
-      });
-
-      if (!res.ok) {
-        throw new Error("Request failed");
-      }
-
-      setContactStatus("success");
-      form.reset();
-    } catch (err) {
-      console.error(err);
-      setContactStatus("error");
-    }
-  }}
->
-
-              <div className="form-row">
-                <label htmlFor="name">Name</label>
-                <input id="name" type="text" required />
-              </div>
-              <div className="form-row">
-                <label htmlFor="email">Email</label>
-                <input id="email" type="email" required />
-              </div>
-              <div className="form-row">
-                <label htmlFor="message">Message</label>
-                <textarea id="message" rows="4" required />
-              </div>
-              <button type="submit">Send</button>
-{contactStatus === "loading" && (
-  <p className="contact-status">Sending…</p>
-)}
-{contactStatus === "success" && (
-  <p className="contact-status contact-status-success">
-    Thanks! I&apos;ll get back to you soon.
-  </p>
-)}
-{contactStatus === "error" && (
-  <p className="contact-status contact-status-error">
-    Something went wrong. Please try again.
-  </p>
-)}
-
-            </form>
+            <div className="intro-links">
+              <a
+                href="https://www.linkedin.com/in/arjunvashistha/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                LinkedIn
+              </a>
+            </div>
           </section>
 
           <footer className="page-footer reveal">
             <p>
               © {new Date().getFullYear()} Arjun Vashistha · Built with React &amp;
-              Spring Boot
+              CSS
             </p>
           </footer>
         </main>
