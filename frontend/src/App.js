@@ -156,15 +156,6 @@ useEffect(() => {
             >
               Contact
             </button>
-            <a
-              href={process.env.PUBLIC_URL + "/resume.pdf"}
-              className="top-nav-resume"
-              target="_blank"
-              rel="noreferrer"
-              download="Arjun-Vashistha-Resume"
-            >
-              Download Resume
-            </a>
           </nav>
         </div>
       </header>
