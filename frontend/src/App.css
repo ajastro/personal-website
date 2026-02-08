@@ -447,10 +447,11 @@ body {
 }
 
 .timeline-body {
-  background: rgba(3, 7, 18, 0.85);
+  background: var(--bg-elevated);
   border-radius: 0.75rem;
   padding: 0.9rem 1rem 0.95rem;
-  border: 1px solid rgba(15, 23, 42, 0.9);
+  border: 1px solid var(--border-subtle);
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
 }
 
 .timeline-header {
@@ -484,10 +485,11 @@ body {
 }
 
 .project-item {
-  background: rgba(3, 7, 18, 0.85);
+  background: var(--bg-elevated);
   border-radius: 0.75rem;
   padding: 0.9rem 1rem 1rem;
-  border: 1px solid rgba(15, 23, 42, 0.9);
+  border: 1px solid var(--border-subtle);
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
 }
 
 .project-header {
