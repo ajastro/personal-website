@@ -169,7 +169,7 @@ useEffect(() => {
             <div className="intro-hero-glow" />
             <p className="intro-eyebrow">Hi, my name is</p>
             <h1 className="intro-name">Arjun Vashistha</h1>
-            <p className="intro-role">I build things for the web.</p>
+            {/* <p className="intro-role">I build things for the web.</p> */}
             <p className="intro-text">
               I&apos;m a backend-leaning engineer who enjoys designing and
               building clean, reliable systems with Java, Spring Boot, React,
